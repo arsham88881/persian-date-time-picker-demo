@@ -1,18 +1,36 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { JsonPipe, NgIf } from '@angular/common';
+import { PersianDateTimePickerModule } from './modules/persian-date-time-picker.module';
+import { CustomRender } from './samples/custom-render';
+import { DisabledDates } from './samples/disabled/diabled-date';
+import { DisabledTimes } from './samples/disabled/diabled-time';
 import {
   CalendarType,
   DatePickerMode,
-  PersianDateTimePickerModule,
   RangeInputLabels,
   TimeValueType,
-  ValueFormat
-} from 'persian-date-time-picker';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {FormControl, FormGroup, FormsModule} from '@angular/forms';
-import {JsonPipe, NgIf} from '@angular/common';
-import {CustomRender} from './samples/custom-render';
-import {DisabledDates} from './samples/disabled/diabled-date';
-import {DisabledTimes} from './samples/disabled/diabled-time';
+  ValueFormat,
+} from './core';
+// import {CustomRender} from './samples/custom-render';
+// import {DisabledDates} from './samples/disabled/diabled-date';
+// import {DisabledTimes} from './samples/disabled/diabled-time';
+// import {
+//   CalendarType,
+//   DatePickerMode,
+//   PersianDateTimePickerModule,
+//   RangeInputLabels,
+//   TimeValueType,
+//   ValueFormat
+// } from 'persian-date-time-picker';
 
 @Component({
   selector: 'app-root',
@@ -23,31 +41,32 @@ import {DisabledTimes} from './samples/disabled/diabled-time';
     NgIf,
     CustomRender,
     DisabledDates,
-    DisabledTimes
+    DisabledTimes,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
     trigger('slideInOut', [
-      state('in', style({
-        width: '250px',
-        opacity: 1,
-      })),
-      state('out', style({
-        width: '0',
-        display: 'none'
-      })),
-      transition('in => out', [
-        animate('300ms ease-in-out')
-      ]),
-      transition('out => in', [
-        animate('300ms ease-in-out')
-      ]),
-    ])
-  ]
+      state(
+        'in',
+        style({
+          width: '250px',
+          opacity: 1,
+        }),
+      ),
+      state(
+        'out',
+        style({
+          width: '0',
+          display: 'none',
+        }),
+      ),
+      transition('in => out', [animate('300ms ease-in-out')]),
+      transition('out => in', [animate('300ms ease-in-out')]),
+    ]),
+  ],
 })
 export class AppComponent {
-
   title = 'persian-date-time-picker-demo';
   Version = '0.1.1';
   isSidebarOpen = true;
@@ -67,7 +86,7 @@ export class AppComponent {
   inputLabel: string = '';
   rangeInputLabel: RangeInputLabels = {
     start: '',
-    end: ''
+    end: '',
   };
   disabled: boolean = false;
   showSidebar: boolean = false;
@@ -90,17 +109,15 @@ export class AppComponent {
 
   form = new FormGroup({
     time: new FormControl('17:17'),
-    date: new FormControl('2024-09-29T00:00:00')
+    date: new FormControl('2024-09-29T00:00:00'),
   });
 
   /**
    *
    */
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
@@ -127,10 +144,8 @@ export class AppComponent {
   }
 
   updateCode() {
-    if (this.showPart == 'datepicker')
-      this.updateDateCode();
-    else
-      this.updateTimeCode();
+    if (this.showPart == 'datepicker') this.updateDateCode();
+    else this.updateTimeCode();
   }
 
   updateDateCode() {

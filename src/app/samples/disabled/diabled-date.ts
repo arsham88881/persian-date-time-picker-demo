@@ -1,7 +1,7 @@
-import {Component} from "@angular/core";
-import {JalaliDateAdapter, PersianDateTimePickerModule} from 'persian-date-time-picker';
-import {FormsModule} from '@angular/forms';
-
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { JalaliDateAdapter } from 'src/app/core';
+import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-picker.module';
 
 @Component({
   selector: 'disabled-dates',
@@ -10,9 +10,10 @@ import {FormsModule} from '@angular/forms';
     <persian-date-picker
       [(ngModel)]="selectedDate"
       [disabledDates]="disabledDates"
-      [disabledDatesFilter]="disabledDatesFilter">
+      [disabledDatesFilter]="disabledDatesFilter"
+    >
     </persian-date-picker>
-    <br>
+    <br />
     Jalali:
     <persian-date-picker
       dir="rtl"
@@ -20,29 +21,33 @@ import {FormsModule} from '@angular/forms';
       [calendarType]="'jalali'"
       [disabledDates]="disabledDatesJalali"
       [disabledDatesFilter]="disabledDatesFilterJalali"
-      [(ngModel)]="selectedDate">
+      [(ngModel)]="selectedDate"
+    >
     </persian-date-picker>
-    <br>
+    <br />
     Month:
     <persian-date-picker
       [(ngModel)]="selectedDate"
       [mode]="'month'"
-      [disabledDatesFilter]="disabledDatesFilterMonth">
+      [disabledDatesFilter]="disabledDatesFilterMonth"
+    >
     </persian-date-picker>
-    <br>
+    <br />
     Year:
     <persian-date-picker
       [(ngModel)]="selectedDate"
       [mode]="'year'"
-      [disabledDatesFilter]="disabledDatesFilterYear">
+      [disabledDatesFilter]="disabledDatesFilterYear"
+    >
     </persian-date-picker>
-    <br>
+    <br />
     Combining with Time:
     <persian-date-picker
       [format]="'yyyy/MM/dd HH:mm'"
       [disabledDatesFilter]="disabledDatesFilterCombined"
       [disabledTimesFilter]="disabledTimesFilter"
-      [(ngModel)]="selectedDate">
+      [(ngModel)]="selectedDate"
+    >
     </persian-date-picker>
     <button class="toggle-btn" (click)="toggleCode(code)">show code</button>
     <div id="code" class="code" #code>
@@ -51,17 +56,16 @@ import {FormsModule} from '@angular/forms';
       </code>
     </div>
   `,
-  imports: [PersianDateTimePickerModule, FormsModule]
+  imports: [FormsModule, PersianDateTimePickerModule],
 })
 export class DisabledDates {
-
   selectedDate?: Date | string;
 
   // Basic
   disabledDates = [
     new Date(), // Disables current date
     '2024/12/05',
-    '2024/12/07'
+    '2024/12/07',
   ];
   // Jalali
   disabledDatesJalali = [
@@ -70,8 +74,9 @@ export class DisabledDates {
     '1403/10/01',
     new Date(2024, 8, 15), // September 15, 2024
     new Date(2024, 11, 25), // December 25, 2024
-    new Date() //today
+    new Date(), //today
   ];
+
   demoCode = `
         @Component({
         selector: 'disabled-dates',
@@ -186,8 +191,9 @@ export class DisabledDates {
     }
     `;
 
-  constructor(private jalaliDateAdapter: JalaliDateAdapter) {
-  }
+  private readonly jalaliDateAdapter = inject(JalaliDateAdapter);
+
+  constructor() {}
 
   disabledDatesFilter = (date: Date) => {
     const day = date.getDay();
@@ -217,7 +223,12 @@ export class DisabledDates {
       let startYear = 1996;
       yearRange.push(startYear + i);
     }
-    let entryYear = year == 2019 || year == 2021 || year == 2026 || year == 2027 || year == 2030;
+    let entryYear =
+      year == 2019 ||
+      year == 2021 ||
+      year == 2026 ||
+      year == 2027 ||
+      year == 2030;
     return yearRange.includes(year) || entryYear;
   };
 

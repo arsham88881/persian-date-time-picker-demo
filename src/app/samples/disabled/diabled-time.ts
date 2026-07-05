@@ -1,7 +1,6 @@
-import {Component} from "@angular/core";
-import {PersianDateTimePickerModule} from 'persian-date-time-picker';
-import {FormsModule} from '@angular/forms';
-
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-picker.module';
 
 @Component({
   selector: 'disabled-times',
@@ -10,9 +9,10 @@ import {FormsModule} from '@angular/forms';
     <persian-time-picker
       [(ngModel)]="selectedDate"
       [disabledTimesFilter]="disabledTimesFilter"
-      [displayFormat]="'HH:mm:ss'">
+      [displayFormat]="'HH:mm:ss'"
+    >
     </persian-time-picker>
-    <br>
+    <br />
 
     <button class="toggle-btn" (click)="toggleCode(code)">show code</button>
     <div id="code" class="code" #code>
@@ -21,10 +21,9 @@ import {FormsModule} from '@angular/forms';
       </code>
     </div>
   `,
-  imports: [PersianDateTimePickerModule, FormsModule]
+  imports: [PersianDateTimePickerModule, FormsModule],
 })
 export class DisabledTimes {
-
   selectedDate?: Date | string;
   demoCode = `
         @Component({

@@ -1,15 +1,28 @@
 <div class="main-section">
-  <div [@slideInOut]="isSidebarOpen ? 'in' : 'out'" [class.closed]="!isSidebarOpen" class="sidebar" id="sidebar">
+  <div
+    [@slideInOut]="isSidebarOpen ? 'in' : 'out'"
+    [class.closed]="!isSidebarOpen"
+    class="sidebar"
+    id="sidebar"
+  >
     <div class="sidebar-content">
       <h2>Persian Date/Time picker</h2>
       <ul>
         <li (click)="showPart = 'datepicker'">Date picker</li>
         <li (click)="showPart = 'timepicker'">Time Picker</li>
         <li>
-          <a href="https://www.npmjs.com/package/persian-date-time-picker" target="_blank">About ({{ Version }})</a>
+          <a
+            href="https://www.npmjs.com/package/persian-date-time-picker"
+            target="_blank"
+            >About ({{ Version }})</a
+          >
         </li>
         <li>
-          <a href="https://github.com/motevalian/persian-date-time-picker-demo" target="_blank">Github</a>
+          <a
+            href="https://github.com/motevalian/persian-date-time-picker-demo"
+            target="_blank"
+            >Github</a
+          >
         </li>
       </ul>
     </div>
@@ -17,12 +30,17 @@
   <div class="content">
     <header class="header">
       <button (click)="toggleSidebar()" class="toggle-button">
-        <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g data-name="Layer 2">
             <g data-name="menu">
-              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="11"/>
-              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="16"/>
-              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="6"/>
+              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="11" />
+              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="16" />
+              <rect height="2" rx=".95" ry=".95" width="18" x="3" y="6" />
             </g>
           </g>
         </svg>
@@ -37,7 +55,12 @@
           <div class="filters">
             <div class="form-group">
               <label for="cal-type">Calendar type:</label>
-              <select (change)="onChangeCalendarType($event)" [(ngModel)]="calendarType" id="cal-type" name="cal-type">
+              <select
+                (change)="onChangeCalendarType($event)"
+                [(ngModel)]="calendarType"
+                id="cal-type"
+                name="cal-type"
+              >
                 <option value="jalali">jalali</option>
                 <option value="gregorian">gregorian</option>
               </select>
@@ -52,7 +75,12 @@
             </div>
             <div class="form-group">
               <label for="valueFormat">Value format:</label>
-              <select (change)="updateCode()" [(ngModel)]="valueFormat" id="valueFormat" name="valueFormat">
+              <select
+                (change)="updateCode()"
+                [(ngModel)]="valueFormat"
+                id="valueFormat"
+                name="valueFormat"
+              >
                 <option value="jalali">jalali</option>
                 <option value="gregorian">gregorian</option>
                 <option value="date">date</option>
@@ -61,8 +89,13 @@
             <div class="form-group">
               <label for="Rtl">Rtl:</label>
               <div class="switch-container">
-                <input (ngModelChange)="updateCode()" [(ngModel)]="rtl" class="switch-checkbox"
-                       id="Rtl" type="checkbox"/>
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="rtl"
+                  class="switch-checkbox"
+                  id="Rtl"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="Rtl">
                   <span class="switch-button"></span>
                 </label>
@@ -71,8 +104,13 @@
             <div class="form-group">
               <label for="isRange">isRange:</label>
               <div class="switch-container">
-                <input (ngModelChange)="updateCode()" [(ngModel)]="isRange" class="switch-checkbox"
-                       id="isRange" type="checkbox"/>
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="isRange"
+                  class="switch-checkbox"
+                  id="isRange"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="isRange">
                   <span class="switch-button"></span>
                 </label>
@@ -80,30 +118,54 @@
             </div>
             <div class="form-group">
               <label for="format">Format:</label>
-              <input (ngModelChange)="updateCode()" [(ngModel)]="format" class="input-text" id="format"
-                     type="text">
+              <input
+                (ngModelChange)="updateCode()"
+                [(ngModel)]="format"
+                class="input-text"
+                id="format"
+                type="text"
+              />
             </div>
             <div class="form-group">
               <label for="footerDescription">Footer description:</label>
-              <input (ngModelChange)="updateCode()" [(ngModel)]="footerDescription" class="input-text"
-                     id="footerDescription"
-                     type="text">
+              <input
+                (ngModelChange)="updateCode()"
+                [(ngModel)]="footerDescription"
+                class="input-text"
+                id="footerDescription"
+                type="text"
+              />
             </div>
             <div *ngIf="!isRange" class="form-group">
               <label for="inputLabel">Input label:</label>
-              <input (ngModelChange)="updateCode()" [(ngModel)]="inputLabel" class="input-text" id="inputLabel"
-                     type="text">
+              <input
+                (ngModelChange)="updateCode()"
+                [(ngModel)]="inputLabel"
+                class="input-text"
+                id="inputLabel"
+                type="text"
+              />
             </div>
             <div *ngIf="isRange" class="range-labels">
               <div class="form-group">
                 <label for="rangeInputLabel">start label:</label>
-                <input (ngModelChange)="updateCode()" [(ngModel)]="rangeInputLabel.start" class="input-text"
-                       id="rangeInputLabel" type="text">
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="rangeInputLabel.start"
+                  class="input-text"
+                  id="rangeInputLabel"
+                  type="text"
+                />
               </div>
               <div class="form-group">
                 <label for="rangeInputLabel">end label:</label>
-                <input (ngModelChange)="updateCode()" [(ngModel)]="rangeInputLabel.end" class="input-text"
-                       id="rangeInputLabel" type="text">
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="rangeInputLabel.end"
+                  class="input-text"
+                  id="rangeInputLabel"
+                  type="text"
+                />
               </div>
             </div>
             <div class="form-group">
@@ -112,12 +174,13 @@
                 (ngModelChange)="updateCode()"
                 [(ngModel)]="minDate"
                 [calendarType]="calendarType"
-                [dir]="rtl? 'rtl': 'ltr'"
+                [dir]="rtl ? 'rtl' : 'ltr'"
                 [format]="'yyyy/MM/dd'"
                 [mode]="'day'"
                 [rtl]="rtl"
                 [showSidebar]="showSidebar"
-                [valueFormat]="valueFormat"></persian-date-picker>
+                [valueFormat]="valueFormat"
+              ></persian-date-picker>
             </div>
             <div class="form-group">
               <label for="MaxDate">Max Date:</label>
@@ -125,19 +188,25 @@
                 (ngModelChange)="updateCode()"
                 [(ngModel)]="maxDate"
                 [calendarType]="calendarType"
-                [dir]="rtl?'rtl':'ltr'"
+                [dir]="rtl ? 'rtl' : 'ltr'"
                 [format]="'yyyy/MM/dd'"
                 [mode]="'day'"
                 [rtl]="rtl"
                 [showSidebar]="showSidebar"
-                [valueFormat]="valueFormat"></persian-date-picker>
+                [valueFormat]="valueFormat"
+              ></persian-date-picker>
             </div>
             <div class="filters">
               <div class="form-group">
                 <label for="isInline">Inline mode:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="isInline" class="switch-checkbox"
-                         id="isInline" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="isInline"
+                    class="switch-checkbox"
+                    id="isInline"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="isInline">
                     <span class="switch-button"></span>
                   </label>
@@ -146,8 +215,13 @@
               <div class="form-group">
                 <label for="ShowSidebar">Show sidebar:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="showSidebar" class="switch-checkbox"
-                         id="ShowSidebar" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="showSidebar"
+                    class="switch-checkbox"
+                    id="ShowSidebar"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="ShowSidebar">
                     <span class="switch-button"></span>
                   </label>
@@ -156,8 +230,13 @@
               <div class="form-group">
                 <label for="showToday">Show today:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="showToday" class="switch-checkbox"
-                         id="showToday" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="showToday"
+                    class="switch-checkbox"
+                    id="showToday"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="showToday">
                     <span class="switch-button"></span>
                   </label>
@@ -166,8 +245,13 @@
               <div class="form-group">
                 <label for="Disabled">Disabled:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="disabled" class="switch-checkbox"
-                         id="Disabled" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="disabled"
+                    class="switch-checkbox"
+                    id="Disabled"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="Disabled">
                     <span class="switch-button"></span>
                   </label>
@@ -176,8 +260,13 @@
               <div class="form-group">
                 <label for="allowEmpty">Allow empty:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="allowEmpty" class="switch-checkbox"
-                         id="allowEmpty" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="allowEmpty"
+                    class="switch-checkbox"
+                    id="allowEmpty"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="allowEmpty">
                     <span class="switch-button"></span>
                   </label>
@@ -186,8 +275,13 @@
               <div class="form-group">
                 <label for="readOnly">readOnly:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="readOnly" class="switch-checkbox"
-                         id="readOnly" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="readOnly"
+                    class="switch-checkbox"
+                    id="readOnly"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="readOnly">
                     <span class="switch-button"></span>
                   </label>
@@ -196,8 +290,13 @@
               <div class="form-group">
                 <label for="readOnlyInput">readOnlyInput:</label>
                 <div class="switch-container">
-                  <input (change)="updateCode()" [(ngModel)]="readOnlyInput" class="switch-checkbox"
-                         id="readOnlyInput" type="checkbox"/>
+                  <input
+                    (change)="updateCode()"
+                    [(ngModel)]="readOnlyInput"
+                    class="switch-checkbox"
+                    id="readOnlyInput"
+                    type="checkbox"
+                  />
                   <label class="switch-label" for="readOnlyInput">
                     <span class="switch-button"></span>
                   </label>
@@ -206,7 +305,7 @@
             </div>
           </div>
         </div>
-        <div [dir]="rtl? 'rtl': 'ltr'" class="box">
+        <div [dir]="rtl ? 'rtl' : 'ltr'" class="box">
           <h2>Settings Result</h2>
           <p>Display the demo based on the settings</p>
           <div class="demo">
@@ -230,11 +329,16 @@
               [rtl]="rtl"
               [showSidebar]="showSidebar"
               [showToday]="showToday"
-              [valueFormat]="valueFormat">
+              [valueFormat]="valueFormat"
+            >
             </persian-date-picker>
-            <code style="margin-top: 10px;display: block;">selectedDate:  {{ selectedDate | json }}</code>
+            <code style="margin-top: 10px; display: block"
+              >selectedDate: {{ selectedDate | json }}</code
+            >
           </div>
-          <button (click)="toggleCode(code)" class="toggle-btn">show code</button>
+          <button (click)="toggleCode(code)" class="toggle-btn">
+            show code
+          </button>
           <div #code class="code" id="code">
             <code>
               {{ demoCode }}
@@ -244,8 +348,8 @@
         <div class="box">
           <h2>Disabled Dates Examples</h2>
           <p>
-            This guide provides various examples of how to use the disabled dates functionality in the Persian Date/Time
-            Picker.
+            This guide provides various examples of how to use the disabled
+            dates functionality in the Persian Date/Time Picker.
           </p>
           <div class="demo">
             <disabled-dates></disabled-dates>
@@ -253,7 +357,9 @@
         </div>
         <div class="box">
           <h2>Custom Templates</h2>
-          <p>The DatePicker supports custom templates for days, months, and years using the
+          <p>
+            The DatePicker supports custom templates for days, months, and years
+            using the
             <code>Template</code>
             directive.
           </p>
@@ -271,7 +377,12 @@
           <div class="filters">
             <div class="form-group">
               <label for="val-type">Value type:</label>
-              <select (change)="updateCode()" [(ngModel)]="timeValueType" id="cal-type" name="val-type">
+              <select
+                (change)="updateCode()"
+                [(ngModel)]="timeValueType"
+                id="cal-type"
+                name="val-type"
+              >
                 <option value="string">string</option>
                 <option value="date">date</option>
               </select>
@@ -279,8 +390,13 @@
             <div class="form-group">
               <label for="Rtl">Rtl:</label>
               <div class="switch-container">
-                <input (ngModelChange)="updateCode()" [(ngModel)]="rtl" class="switch-checkbox"
-                       id="Rtl" type="checkbox"/>
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="rtl"
+                  class="switch-checkbox"
+                  id="Rtl"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="Rtl">
                   <span class="switch-button"></span>
                 </label>
@@ -289,8 +405,13 @@
             <div class="form-group">
               <label for="showIcon">Show icon:</label>
               <div class="switch-container">
-                <input (ngModelChange)="updateCode()" [(ngModel)]="showIcon" class="switch-checkbox"
-                       id="showIcon" type="checkbox"/>
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="showIcon"
+                  class="switch-checkbox"
+                  id="showIcon"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="showIcon">
                   <span class="switch-button"></span>
                 </label>
@@ -298,25 +419,41 @@
             </div>
             <div class="form-group">
               <label for="format">Display format:</label>
-              <input (ngModelChange)="updateCode()" [(ngModel)]="timeDisplayFormat" class="input-text" id="format"
-                     type="text">
+              <input
+                (ngModelChange)="updateCode()"
+                [(ngModel)]="timeDisplayFormat"
+                class="input-text"
+                id="format"
+                type="text"
+              />
             </div>
 
             <div class="form-group">
               <label for="MinDate">Min time:</label>
-              <persian-time-picker (ngModelChange)="onChange($event)"
-                                   [(ngModel)]="minTime" [displayFormat]="timeDisplayFormat"></persian-time-picker>
+              <persian-time-picker
+                (ngModelChange)="onChange($event)"
+                [(ngModel)]="minTime"
+                [displayFormat]="timeDisplayFormat"
+              ></persian-time-picker>
             </div>
             <div class="form-group">
               <label for="MaxDate">Max time:</label>
-              <persian-time-picker (ngModelChange)="onChange($event)"
-                                   [(ngModel)]="maxTime" [displayFormat]="timeDisplayFormat"></persian-time-picker>
+              <persian-time-picker
+                (ngModelChange)="onChange($event)"
+                [(ngModel)]="maxTime"
+                [displayFormat]="timeDisplayFormat"
+              ></persian-time-picker>
             </div>
             <div class="form-group">
               <label for="isInline">Inline mode:</label>
               <div class="switch-container">
-                <input (ngModelChange)="updateCode()" [(ngModel)]="isInline" class="switch-checkbox"
-                       id="isInline" type="checkbox"/>
+                <input
+                  (ngModelChange)="updateCode()"
+                  [(ngModel)]="isInline"
+                  class="switch-checkbox"
+                  id="isInline"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="isInline">
                   <span class="switch-button"></span>
                 </label>
@@ -325,8 +462,13 @@
             <div class="form-group">
               <label for="Disabled">Disabled:</label>
               <div class="switch-container">
-                <input (change)="updateCode()" [(ngModel)]="disabled" class="switch-checkbox"
-                       id="Disabled" type="checkbox"/>
+                <input
+                  (change)="updateCode()"
+                  [(ngModel)]="disabled"
+                  class="switch-checkbox"
+                  id="Disabled"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="Disabled">
                   <span class="switch-button"></span>
                 </label>
@@ -335,8 +477,13 @@
             <div class="form-group">
               <label for="allowEmpty">Allow empty:</label>
               <div class="switch-container">
-                <input (change)="updateCode()" [(ngModel)]="allowEmpty" class="switch-checkbox"
-                       id="allowEmpty" type="checkbox"/>
+                <input
+                  (change)="updateCode()"
+                  [(ngModel)]="allowEmpty"
+                  class="switch-checkbox"
+                  id="allowEmpty"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="allowEmpty">
                   <span class="switch-button"></span>
                 </label>
@@ -345,8 +492,13 @@
             <div class="form-group">
               <label for="readOnly">readOnly:</label>
               <div class="switch-container">
-                <input (change)="updateCode()" [(ngModel)]="readOnly" class="switch-checkbox"
-                       id="readOnly" type="checkbox"/>
+                <input
+                  (change)="updateCode()"
+                  [(ngModel)]="readOnly"
+                  class="switch-checkbox"
+                  id="readOnly"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="readOnly">
                   <span class="switch-button"></span>
                 </label>
@@ -355,8 +507,13 @@
             <div class="form-group">
               <label for="readOnlyInput">readOnlyInput:</label>
               <div class="switch-container">
-                <input (change)="updateCode()" [(ngModel)]="readOnlyInput" class="switch-checkbox"
-                       id="readOnlyInput" type="checkbox"/>
+                <input
+                  (change)="updateCode()"
+                  [(ngModel)]="readOnlyInput"
+                  class="switch-checkbox"
+                  id="readOnlyInput"
+                  type="checkbox"
+                />
                 <label class="switch-label" for="readOnlyInput">
                   <span class="switch-button"></span>
                 </label>
@@ -364,7 +521,7 @@
             </div>
           </div>
         </div>
-        <div [dir]="rtl? 'rtl': 'ltr'" class="box">
+        <div [dir]="rtl ? 'rtl' : 'ltr'" class="box">
           <h2>Settings Result</h2>
           <p>Display the demo based on the settings</p>
           <div class="demo">
@@ -380,11 +537,16 @@
               [readOnly]="readOnly"
               [rtl]="rtl"
               [showIcon]="showIcon"
-              [valueType]="timeValueType">
+              [valueType]="timeValueType"
+            >
             </persian-time-picker>
-            <code style="margin-top: 10px;display: block;">selectedDate:  {{ selectedTime | json }}</code>
+            <code style="margin-top: 10px; display: block"
+              >selectedDate: {{ selectedTime | json }}</code
+            >
           </div>
-          <button (click)="toggleCode(code)" class="toggle-btn">show code</button>
+          <button (click)="toggleCode(code)" class="toggle-btn">
+            show code
+          </button>
           <div #code class="code" id="code">
             <code>
               {{ demoCode }}
@@ -394,9 +556,9 @@
 
         <div class="box">
           <h2>Disabled Times Examples</h2>
-          <p>This guide provides various examples of how to use the disabled times functionality in the Persian
-            Date/Time
-            Picker.
+          <p>
+            This guide provides various examples of how to use the disabled
+            times functionality in the Persian Date/Time Picker.
           </p>
           <div class="demo">
             <disabled-times></disabled-times>
