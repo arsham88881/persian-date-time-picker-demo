@@ -17,8 +17,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { takeUntil } from 'rxjs';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
-import { TimePickerComponent } from '..';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   CalendarType,
   CustomLabels,
@@ -33,12 +32,13 @@ import {
   PersianDateTimePickerService,
   YearRange,
 } from '../../core';
+import { TimePickerComponent } from '../time-picker/time-picker.component';
 
 @Component({
   selector: 'persian-date-picker-popup',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, NgFor, NgTemplateOutlet, TimePickerComponent],
+  imports: [CommonModule, NgTemplateOutlet, TimePickerComponent],
   templateUrl: './date-picker-popup.component.html',
   styleUrls: ['./date-picker-popup.component.scss'],
 })

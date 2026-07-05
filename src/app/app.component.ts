@@ -8,7 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { FormControl, FormGroup, FormsModule } from '@angular/forms';
-import { JsonPipe, NgIf } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { PersianDateTimePickerModule } from './modules/persian-date-time-picker.module';
 import { CustomRender } from './samples/custom-render';
 import { DisabledDates } from './samples/disabled/diabled-date';
@@ -20,17 +20,6 @@ import {
   TimeValueType,
   ValueFormat,
 } from './core';
-// import {CustomRender} from './samples/custom-render';
-// import {DisabledDates} from './samples/disabled/diabled-date';
-// import {DisabledTimes} from './samples/disabled/diabled-time';
-// import {
-//   CalendarType,
-//   DatePickerMode,
-//   PersianDateTimePickerModule,
-//   RangeInputLabels,
-//   TimeValueType,
-//   ValueFormat
-// } from 'persian-date-time-picker';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +27,7 @@ import {
     PersianDateTimePickerModule,
     FormsModule,
     JsonPipe,
-    NgIf,
+    CommonModule,
     CustomRender,
     DisabledDates,
     DisabledTimes,
@@ -70,7 +59,7 @@ export class AppComponent {
   title = 'persian-date-time-picker-demo';
   Version = '0.1.1';
   isSidebarOpen = true;
-  showPart = 'datepicker';
+  showPart = 'timepicker';
 
   // models
   selectedDate: any = '1403/02/11';

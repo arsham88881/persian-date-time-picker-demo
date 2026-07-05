@@ -9,6 +9,7 @@ import {
   EventEmitter,
   forwardRef,
   Inject,
+  inject,
   Injector,
   Input,
   NgZone,
@@ -40,7 +41,11 @@ import {
   OverlayModule,
   VerticalConnectionPos,
 } from '@angular/cdk/overlay';
-import { DOCUMENT, NgIf, NgTemplateOutlet } from '@angular/common';
+import {
+  CommonModule,
+  DOCUMENT,
+  NgTemplateOutlet,
+} from '@angular/common';
 import { fromEvent, takeUntil } from 'rxjs';
 ///
 import {
@@ -65,10 +70,8 @@ import {
   slideMotion,
   ValueFormat,
 } from '../../core';
-import { DatePickerPopupComponent } from '..';
+import { DatePickerPopupComponent } from '../date-picker-popup/date-picker-popup.component';
 
-const directives = [NzConnectedOverlayDirective, DateMaskDirective];
-const services = [DestroyService, PersianDateTimePickerService];
 
 @Component({
   selector: 'persian-date-picker',
@@ -81,17 +84,16 @@ const services = [DestroyService, PersianDateTimePickerService];
     '[class.persian-date-picker-rtl]': 'rtl',
   },
   imports: [
-    NgIf,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     OverlayModule,
     NgTemplateOutlet,
     DatePickerPopupComponent,
-    ...directives,
-    // ...components,
+    NzConnectedOverlayDirective,
+    DateMaskDirective,
   ],
   providers: [
-    ...services,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatePickerComponent),
@@ -162,16 +164,20 @@ export class DatePickerComponent
   timeDisplayFormat = 'HH:mm';
   documentClickListener?: (event: MouseEvent) => void;
 
+  private readonly persianDateTimePickerService = inject(
+    PersianDateTimePickerService,
+  );
+  private readonly destroyService = inject(DestroyService);
+
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly ngZone = inject(NgZone);
+  private readonly jalaliDateAdapter = inject(JalaliDateAdapter);
+  private readonly gregorianDateAdapter = inject(GregorianDateAdapter);
+
   constructor(
     public formBuilder: FormBuilder,
     public elementRef: ElementRef,
     public injector: Injector,
-    public changeDetectorRef: ChangeDetectorRef,
-    public persianDateTimePickerService: PersianDateTimePickerService,
-    public destroyService: DestroyService,
-    public ngZone: NgZone,
-    public jalaliDateAdapter: JalaliDateAdapter,
-    public gregorianDateAdapter: GregorianDateAdapter,
     @Inject(DOCUMENT) doc: Document,
   ) {
     this.initializeComponent(doc);

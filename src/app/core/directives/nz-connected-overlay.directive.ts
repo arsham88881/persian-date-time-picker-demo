@@ -1,5 +1,4 @@
-import { Directive, ElementRef, Input } from '@angular/core';
-import { DestroyService, Dimensions, getPlacementName, InputBoolean } from '..';
+import { Directive, ElementRef, inject, Input } from '@angular/core';
 import {
   CdkConnectedOverlay,
   CdkOverlayOrigin,
@@ -7,20 +6,23 @@ import {
   FlexibleConnectedPositionStrategyOrigin,
 } from '@angular/cdk/overlay';
 import { takeUntil } from 'rxjs';
+import { DestroyService } from '../services/persian-date-time-picker.service';
+import { InputBoolean } from '../functions/prop-decorator-factory';
+import { getPlacementName } from '../functions/get-placement-name';
+import { Dimensions } from '../models/types';
 
 @Directive({
   selector: '[cdkConnectedOverlay][nzConnectedOverlay]',
   exportAs: 'nzConnectedOverlay',
   standalone: true,
-  providers: [DestroyService],
 })
 export class NzConnectedOverlayDirective {
   @Input() @InputBoolean() nzArrowPointAtCenter: boolean = false;
 
-  constructor(
-    private readonly cdkConnectedOverlay: CdkConnectedOverlay,
-    private readonly destroyService: DestroyService,
-  ) {
+  private readonly destroyService = inject(DestroyService);
+  private readonly cdkConnectedOverlay = inject(CdkConnectedOverlay);
+
+  constructor() {
     this.cdkConnectedOverlay.backdropClass = 'nz-overlay-transparent-backdrop';
 
     this.cdkConnectedOverlay.positionChange

@@ -1,5 +1,8 @@
 import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
-import { POSITION_MAP, POSITION_TYPE } from '..';
+import {
+  POSITION_MAP,
+  POSITION_TYPE,
+} from '../consts/date-picker-positions.const';
 
 export function getPlacementName(
   position: ConnectedOverlayPositionChange,

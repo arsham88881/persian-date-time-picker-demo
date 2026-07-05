@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DateAdapter } from '..';
+
 import {
   addDays as addDaysJalali,
   addHours as addHoursJalali,
@@ -24,6 +24,7 @@ import {
   startOfMonth as startOfMonthJalali,
   startOfWeek as startOfWeekJalali,
 } from 'date-fns-jalali';
+import { DateAdapter } from '../models/date-adapter.contract';
 
 @Injectable({
   providedIn: 'root',

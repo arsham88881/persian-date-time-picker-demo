@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DateAdapter } from '..';
 
 import {
   addDays as addDaysGregorian,
@@ -25,6 +24,7 @@ import {
   startOfMonth as startOfMonthGregorian,
   startOfWeek as startOfWeekGregorian,
 } from 'date-fns';
+import { DateAdapter } from '../models/date-adapter.contract';
 
 @Injectable({
   providedIn: 'root',

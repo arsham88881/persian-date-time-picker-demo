@@ -6,6 +6,7 @@ import {
   EventEmitter,
   forwardRef,
   HostListener,
+  inject,
   Injector,
   Input,
   OnChanges,
@@ -29,7 +30,7 @@ import {
   ConnectedOverlayPositionChange,
   OverlayModule,
 } from '@angular/cdk/overlay';
-import { NgFor, NgIf, NgTemplateOutlet } from '@angular/common';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
   DateAdapter,
   DateMaskDirective,
@@ -45,9 +46,6 @@ import {
   TimeValueType,
 } from '../../core';
 
-const directives = [NzConnectedOverlayDirective, DateMaskDirective];
-const services = [PersianDateTimePickerService];
-
 @Component({
   selector: 'persian-time-picker',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,16 +53,15 @@ const services = [PersianDateTimePickerService];
   styleUrls: ['./time-picker.component.scss'],
   standalone: true,
   imports: [
-    NgIf,
-    NgFor,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     NgTemplateOutlet,
     OverlayModule,
-    ...directives,
+    NzConnectedOverlayDirective,
+    DateMaskDirective,
   ],
   providers: [
-    ...services,
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TimePickerComponent),
@@ -118,12 +115,15 @@ export class TimePickerComponent
   overlayPositions = [...DEFAULT_DATE_PICKER_POSITIONS];
   private timeoutId: number | null = null;
 
+  private readonly persianDateTimePickerService = inject(
+    PersianDateTimePickerService,
+  );
+
   constructor(
     public formBuilder: FormBuilder,
     public elementRef: ElementRef,
     public injector: Injector,
     public changeDetectorRef: ChangeDetectorRef,
-    public persianDateTimePickerService: PersianDateTimePickerService,
     public jalaliDateAdapter: JalaliDateAdapter,
     public gregorianDateAdapter: GregorianDateAdapter,
   ) {
