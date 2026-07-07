@@ -4,10 +4,12 @@
   [formGroup]="form!"
   class="date-picker-wrapper"
 >
-  <ng-container *ngIf="!isInline; else inlineMode">
-    <ng-container *ngIf="!isRange; else rangeMode">
+  @if (!isInline) {
+    @if (!isRange) {
       <div [class.rtl] class="input-container">
-        <label *ngIf="inputLabel" for="dateInput">{{ inputLabel }}</label>
+        @if (inputLabel) {
+          <label for="dateInput">{{ inputLabel }}</label>
+        }
         <input
           #datePickerInput
           (blur)="onInputBlur(null, $event)"
@@ -25,16 +27,17 @@
         />
         <ng-container *ngTemplateOutlet="icon"></ng-container>
       </div>
-    </ng-container>
-    <ng-template #rangeMode>
-      <div *ngIf="rangeInputLabels" class="range-input-labels">
-        <div class="start-label">
-          <label for="startDateInput">{{ rangeInputLabels!.start }}</label>
+    } @else {
+      @if (rangeInputLabels) {
+        <div class="range-input-labels">
+          <div class="start-label">
+            <label for="startDateInput">{{ rangeInputLabels!.start }}</label>
+          </div>
+          <div class="end-label">
+            <label for="endDateInput">{{ rangeInputLabels!.end }}</label>
+          </div>
         </div>
-        <div class="end-label">
-          <label for="endDateInput">{{ rangeInputLabels!.end }}</label>
-        </div>
-      </div>
+      }
       <div class="range-input-container">
         <input
           #rangePickerInput
@@ -71,7 +74,7 @@
         />
         <ng-container *ngTemplateOutlet="icon"></ng-container>
       </div>
-    </ng-template>
+    }
     <ng-template #icon>
       <button
         (click)="toggleDatePicker(null, $event)"
@@ -94,7 +97,9 @@
         </svg>
       </button>
     </ng-template>
-  </ng-container>
+  } @else {
+    <ng-container *ngTemplateOutlet="inlineMode"></ng-container>
+  }
   <ng-template #inlineMode>
     <div
       [class.persian-date-picker-dropdown-placement-bottomLeft]="

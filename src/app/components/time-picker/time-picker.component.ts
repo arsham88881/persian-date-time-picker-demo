@@ -118,14 +118,14 @@ export class TimePickerComponent
   private readonly persianDateTimePickerService = inject(
     PersianDateTimePickerService,
   );
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly jalaliDateAdapter = inject(JalaliDateAdapter);
+  private readonly gregorianDateAdapter = inject(GregorianDateAdapter);
 
   constructor(
     public formBuilder: FormBuilder,
     public elementRef: ElementRef,
     public injector: Injector,
-    public changeDetectorRef: ChangeDetectorRef,
-    public jalaliDateAdapter: JalaliDateAdapter,
-    public gregorianDateAdapter: GregorianDateAdapter,
   ) {
     this.dateAdapter = this.gregorianDateAdapter;
     this.initializeForm();
