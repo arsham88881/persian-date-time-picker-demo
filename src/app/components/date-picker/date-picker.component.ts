@@ -41,11 +41,7 @@ import {
   OverlayModule,
   VerticalConnectionPos,
 } from '@angular/cdk/overlay';
-import {
-  CommonModule,
-  DOCUMENT,
-  NgTemplateOutlet,
-} from '@angular/common';
+import { CommonModule, DOCUMENT, NgTemplateOutlet } from '@angular/common';
 import { fromEvent, takeUntil } from 'rxjs';
 ///
 import {

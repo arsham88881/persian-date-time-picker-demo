@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 import { GregorianDateAdapter, JalaliDateAdapter } from '../core';
 import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'custom-render',
@@ -10,21 +11,20 @@ import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker
     Gregorian:
     <persian-date-picker [(ngModel)]="selectedDate">
       <ng-template dtp-template="day" let-date>
-        <span
-          class="meeting"
-          *ngIf="
-            date.getDate() == 14 || date.getDate() == 16 || date.getDate() == 18
-          "
-        >
-          {{ date.getDate() }}
-        </span>
-        <span
-          *ngIf="
-            date.getDate() != 14 && date.getDate() != 16 && date.getDate() != 18
-          "
-        >
-          {{ date.getDate() }}
-        </span>
+        @if (
+          date.getDate() == 14 || date.getDate() == 16 || date.getDate() == 18
+        ) {
+          <span class="meeting">
+            {{ date.getDate() }}
+          </span>
+        }
+        @if (
+          date.getDate() != 14 && date.getDate() != 16 && date.getDate() != 18
+        ) {
+          <span>
+            {{ date.getDate() }}
+          </span>
+        }
       </ng-template>
     </persian-date-picker>
     <br />
@@ -36,25 +36,24 @@ import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker
       [(ngModel)]="selectedDate"
     >
       <ng-template dtp-template="day" let-date>
-        <span
-          class="meeting"
-          *ngIf="
-            getJalaliDay(date) == 14 ||
-            getJalaliDay(date) == 16 ||
-            getJalaliDay(date) == 18
-          "
-        >
-          {{ getJalaliDay(date) }}
-        </span>
-        <span
-          *ngIf="
-            getJalaliDay(date) != 14 &&
-            getJalaliDay(date) != 16 &&
-            getJalaliDay(date) != 18
-          "
-        >
-          {{ getJalaliDay(date) }}
-        </span>
+        @if (
+          getJalaliDay(date) == 14 ||
+          getJalaliDay(date) == 16 ||
+          getJalaliDay(date) == 18
+        ) {
+          <span class="meeting">
+            {{ getJalaliDay(date) }}
+          </span>
+        }
+        @if (
+          getJalaliDay(date) != 14 &&
+          getJalaliDay(date) != 16 &&
+          getJalaliDay(date) != 18
+        ) {
+          <span>
+            {{ getJalaliDay(date) }}
+          </span>
+        }
       </ng-template>
     </persian-date-picker>
     <br />
@@ -70,12 +69,16 @@ import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker
     Year:
     <persian-date-picker [(ngModel)]="selectedDate" [mode]="'year'">
       <ng-template dtp-template="year" let-year>
-        <div *ngIf="year % 2 == 0" class="border-red">
-          {{ year }}
-        </div>
-        <div *ngIf="year % 2 != 0" class="meeting">
-          {{ year }}
-        </div>
+        @if (year % 2 == 0) {
+          <div class="border-red">
+            {{ year }}
+          </div>
+        }
+        @if (year % 2 != 0) {
+          <div class="meeting">
+            {{ year }}
+          </div>
+        }
       </ng-template>
     </persian-date-picker>
     <br />
@@ -121,7 +124,7 @@ import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker
       }
     `,
   ],
-  imports: [PersianDateTimePickerModule, FormsModule, NgIf],
+  imports: [PersianDateTimePickerModule, FormsModule, CommonModule],
 })
 export class CustomRender {
   selectedDate?: Date | string;
