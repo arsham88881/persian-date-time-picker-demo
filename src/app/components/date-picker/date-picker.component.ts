@@ -63,11 +63,9 @@ import {
   Placement,
   RangeInputLabels,
   RangePartType,
-  slideMotion,
   ValueFormat,
 } from '../../core';
 import { DatePickerPopupComponent } from '../date-picker-popup/date-picker-popup.component';
-
 
 @Component({
   selector: 'persian-date-picker',
@@ -96,7 +94,6 @@ import { DatePickerPopupComponent } from '../date-picker-popup/date-picker-popup
       multi: true,
     },
   ],
-  animations: [slideMotion],
 })
 export class DatePickerComponent
   implements ControlValueAccessor, OnInit, OnChanges, AfterViewInit, OnDestroy

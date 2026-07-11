@@ -123,7 +123,8 @@
         (closePicker)="close()"
         (dateRangeSelected)="onDateRangeSelected($event)"
         (dateSelected)="onDateSelected($event)"
-        [@slideMotion]="'enter'"
+        animate.enter="slide-enter"
+        animate.leave="slide-leave"
         [activeInput]="activeInput"
         [attr.disabled]="disabled ? 'disabled' : null"
         [calendarType]="calendarType"
@@ -164,7 +165,8 @@
   >
     <div
       (click)="$event.stopPropagation()"
-      [@slideMotion]="'enter'"
+      animate.enter="slide-enter"
+      animate.leave="slide-leave"
       [class.disabled]="disabled"
       class="persian-date-time-picker-wrapper"
       style="position: relative"

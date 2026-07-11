@@ -65,7 +65,8 @@
     <div
       #popupWrapper
       (click)="$event.stopPropagation()"
-      [@slideMotion]="'enter'"
+      animate.enter="slide-enter"
+      animate.leave="slide-leave"
       [class.disabled]="disabled"
       [class.inline]="inline"
       [class]="'time-picker-popup ' + cssClass"

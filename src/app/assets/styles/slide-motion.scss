@@ -1,0 +1,59 @@
+// ------------------------------------------------------------------
+// Slide Motion (native CSS - keyframe based) — جایگزین slideMotion و slideAlertMotion
+// ------------------------------------------------------------------
+@use 'animation-tokens' as tokens;
+
+// ---------- slideMotion ----------
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+}
+
+// معادل: transition('void => *', animate(BASE, EASE_OUT_QUINT))
+.slide-enter {
+  transform-origin: top;
+  animation: slide-in tokens.$animation-duration-base tokens.$animation-ease-out-quint both;
+}
+
+// معادل: transition('* => void', animate(BASE, EASE_IN_QUINT))
+.slide-leave {
+  transform-origin: top;
+  animation: slide-out tokens.$animation-duration-base tokens.$animation-ease-in-quint both;
+}
+
+// ---------- slideAlertMotion ----------
+
+@keyframes slide-alert-out {
+  from {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  to {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+}
+
+// معادل: transition(':leave', animate(SLOW, EASE_IN_OUT_CIRC))
+.slide-alert-leave {
+  transform-origin: 0% 0%;
+  animation: slide-alert-out tokens.$animation-duration-slow tokens.$animation-ease-in-out-circ both;
+}

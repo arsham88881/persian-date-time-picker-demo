@@ -40,7 +40,6 @@ import {
   LanguageLocale,
   NzConnectedOverlayDirective,
   PersianDateTimePickerService,
-  slideMotion,
   TimeConfig,
   TimeFormat,
   TimeValueType,
@@ -71,7 +70,6 @@ import {
   host: {
     '(click)': 'open()',
   },
-  animations: [slideMotion],
 })
 export class TimePickerComponent
   implements ControlValueAccessor, OnInit, OnDestroy, OnChanges

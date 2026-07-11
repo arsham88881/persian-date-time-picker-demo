@@ -1,9 +1,11 @@
+@use "./app/assets/styles/animation-tokens";
+@use "./app/assets/styles/slide-motion";
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap');
-@import '@angular/cdk/overlay-prebuilt.css';
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap");
+@import "@angular/cdk/overlay-prebuilt.css";
 
 body {
-  font-family: 'vazirmatn';
+  font-family: "vazirmatn";
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -56,7 +58,7 @@ code {
 }
 
 .switch-checkbox:checked + .switch-label {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 .switch-checkbox:checked + .switch-label .switch-button {
@@ -90,7 +92,6 @@ select {
   border: 1px solid #ccc;
   font-size: 14px;
 }
-
 
 /* Forms */
 .filters {
