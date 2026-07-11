@@ -8,8 +8,7 @@ export * from './models/types';
 export * from './models/year-range.model';
 export * from './models/date-adapter.contract';
 
-///consts
-export * from './consts/animation.const';
+//consts
 export * from './consts/date-picker-positions.const';
 
 ///adapters
