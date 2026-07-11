@@ -15,9 +15,6 @@ export * from './consts/date-picker-positions.const';
 export * from './utils/gregorian-date-adapter';
 export * from './utils/jalali-date-adapter';
 
-///animations
-// export * from './animations/slide';
-
 ///functions and extentions methods
 export * from './functions/get-placement-name';
 export * from './functions/prop-decorator-factory';
