@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-picker.module';
-
+import { TimePickerComponent } from 'src/app/components';
 @Component({
   selector: 'disabled-times',
   template: `
@@ -21,7 +20,7 @@ import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-p
       </code>
     </div>
   `,
-  imports: [PersianDateTimePickerModule, FormsModule],
+  imports: [TimePickerComponent, FormsModule],
 })
 export class DisabledTimes {
   selectedDate?: Date | string;

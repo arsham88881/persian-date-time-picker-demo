@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DatePickerComponent } from 'src/app/components';
 import { JalaliDateAdapter } from 'src/app/core';
-import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-picker.module';
-
 @Component({
   selector: 'disabled-dates',
   template: `
@@ -56,7 +55,7 @@ import { PersianDateTimePickerModule } from 'src/app/modules/persian-date-time-p
       </code>
     </div>
   `,
-  imports: [FormsModule, PersianDateTimePickerModule],
+  imports: [FormsModule, DatePickerComponent],
 })
 export class DisabledDates {
   selectedDate?: Date | string;

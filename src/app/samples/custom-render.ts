@@ -1,9 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { GregorianDateAdapter, JalaliDateAdapter } from '../core';
-import { PersianDateTimePickerModule } from '../modules/persian-date-time-picker.module';
+import {
+  CustomTemplate,
+  GregorianDateAdapter,
+  JalaliDateAdapter,
+} from '../core';
 import { CommonModule } from '@angular/common';
+import { DatePickerComponent } from '../components';
 
 @Component({
   selector: 'custom-render',
@@ -124,7 +128,7 @@ import { CommonModule } from '@angular/common';
       }
     `,
   ],
-  imports: [PersianDateTimePickerModule, FormsModule, CommonModule],
+  imports: [DatePickerComponent, CustomTemplate, FormsModule, CommonModule],
 })
 export class CustomRender {
   selectedDate?: Date | string;

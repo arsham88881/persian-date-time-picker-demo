@@ -9,8 +9,6 @@ import {
 } from '@angular/animations';
 import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { CommonModule, JsonPipe } from '@angular/common';
-import { PersianDateTimePickerModule } from './modules/persian-date-time-picker.module';
-import { CustomRender } from './samples/custom-render';
 import { DisabledDates } from './samples/disabled/diabled-date';
 import { DisabledTimes } from './samples/disabled/diabled-time';
 import {
@@ -20,18 +18,21 @@ import {
   TimeValueType,
   ValueFormat,
 } from './core';
+import { DatePickerComponent, TimePickerComponent } from './components';
+import { CustomRender } from "./samples/custom-render";
 
 @Component({
   selector: 'app-root',
   imports: [
-    PersianDateTimePickerModule,
+    DatePickerComponent,
+    TimePickerComponent,
     FormsModule,
     JsonPipe,
     CommonModule,
-    CustomRender,
     DisabledDates,
     DisabledTimes,
-  ],
+    CustomRender
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   animations: [
